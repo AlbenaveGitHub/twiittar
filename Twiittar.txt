@@ -1,0 +1,30 @@
+…or create a new repository on the command line
+echo "# twiittar" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/AlbenaveGitHub/twiittar.git
+git push -u origin master
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/AlbenaveGitHub/twiittar.git
+git branch -M main
+git push -u origin master
+
+
+Heroku
+
+heroku login
+
+cd my-project/
+git init
+heroku git:remote -a twiittar
+
+git add .
+git commit -am "make it better"
+git push heroku master
+
+Conexion a la base de datos
+
+mongodb+srv://mongoAlbenave:<password>@twiittar.ozitdwf.mongodb.net/?retryWrites=true&w=majority
