@@ -39,3 +39,25 @@ go get golang.org/x/crypto/bcrypt
 go get github.com/gorilla/mux
 go get github.com/rs/cors
 go get github.com/dgrijalva/jwt-go
+
+Direccion para probar la API en Heroku
+https://twiittar.herokuapp.com/
+
+
+Comandos para subir a Github y Heroku
+
+go build main.go
+git add .
+git status
+git commit -m "Registro de usuario"
+git push origin master
+git push heroku master
+
+
+
+
+
+
+
+
+
