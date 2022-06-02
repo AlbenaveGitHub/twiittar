@@ -29,16 +29,21 @@ func LeoTweets(ID string, pagina int64) ([]*models.DevuelvoTweets, bool) {
 	opciones.SetSort(bson.D{{Key: "fecha", Value: -1}})
 	opciones.SetSkip((pagina - 1) * 20)
 
-	if cursor, err := col.Find(ctx, condicion, opciones); err != nil {
+	cursor, err := col.Find(ctx, condicion, opciones)
+	if err != nil {
 		log.Fatal(err.Error())
 		return resultados, false
-	} else {
-		var registro models.DevuelvoTweets
-		if err := cursor.Decode(&registro); err != nil {
-			return resultados, false
-		} else {
-			return resultados, true
-		}
 	}
+
+	for cursor.Next(context.TODO()) {
+		var registro models.DevuelvoTweets
+
+		err = cursor.Decode(&registro)
+		if err != nil {
+			return resultados, false
+		}
+		resultados = append(resultados, &registro)
+	}
+	return resultados, true
 
 }

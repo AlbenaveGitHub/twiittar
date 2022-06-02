@@ -28,11 +28,12 @@ func LeoTweets(rw http.ResponseWriter, r *http.Request) {
 	}
 	pag := int64(pagina)
 	respuesta, correcto := bd.LeoTweets(ID, pag)
+
 	if correcto == false {
 		http.Error(rw, "Error al leer los tweets", http.StatusBadRequest)
 		return
 	}
-	rw.Header().Set("Context-type", "application/json")
+	rw.Header().Set("Content-type", "application/json")
 	rw.WriteHeader(http.StatusCreated)
 	json.NewEncoder(rw).Encode(respuesta)
 
